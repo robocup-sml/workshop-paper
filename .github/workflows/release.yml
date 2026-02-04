@@ -1,0 +1,38 @@
+name: Build & Release PDF
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g. v0.1, v1.0)'
+        required: true
+      release_name:
+        description: 'Release title'
+        required: true
+        default: 'Smart Manufacturing League Position Paper'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Build LaTeX PDF
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: main.tex
+
+    - name: Create Git tag
+      run: |
+        git tag ${{ github.event.inputs.version }}
+        git push origin ${{ github.event.inputs.version }}
+
+    - name: Create GitHub Release and upload PDF
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ github.event.inputs.version }}
+        name: ${{ github.event.inputs.release_name }}
+        files: main.pdf
+
