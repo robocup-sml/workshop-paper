@@ -1,5 +1,8 @@
 # Workshop Paper
 
+Download the PDF using the [latest release](https://github.com/robocup-sml/workshop-paper/releases).
+Unreleased modifications can be viewed as [build artefacts](https://github.com/robocup-sml/workshop-paper/actions/workflows/build.yml).
+
 This repository contains a **concept draft** for discussion at the RoboCup German Open 2026.
 **It does not represent any official position** on the direction of the RoboCup Smart Manufacturing League.  
 **It reflects the opinions of the authors** and is intended to present a coherent vision for the future, serving as a baseline for discussion.
